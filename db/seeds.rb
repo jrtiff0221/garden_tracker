@@ -8,3 +8,6 @@
 
 default_user = User.create({ username: 'test_user', email: 'test@test.com', password: 'test' })
 default_user.save
+
+default_user_2 = User.create({ username: 'test_user_2', email: 'test2@test.com', password: 'test' })
+default_user_2.save
