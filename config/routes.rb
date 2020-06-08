@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  resources :users, only: [:login, :create, :show]
-
   
-  get '/login', to: "sessions#login"
-  post 'login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy"
-  post '/signup', to: "sessions#create"
 
+  root 'sessions#home'
+  get '/signup' => 'users#new'
+  get  '/login' =>  'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+  
+  resources :users
   
   resources :gardens 
   resources :produces
+
 
   
 

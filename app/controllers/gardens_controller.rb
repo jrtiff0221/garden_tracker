@@ -8,7 +8,7 @@ class GardensController < ApplicationController
     end 
 
     def index
-    
+        @garden = Garden.all
     end
 
     
