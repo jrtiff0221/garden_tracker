@@ -1,0 +1,27 @@
+<%= link_to 'All Gardens', gardens_path, method: :get %>
+<br>
+<h1> Create a Garden</h1>
+
+<br >
+
+<%= form_for (@garden)  do |f| %>
+    
+    <%= f.label :Garden_name %>
+    <%= f.text_field :garden_name %>
+<br>
+    <%= f.label :category %>
+    <%= f.select(:category, ["Vegetable", "Fruit", "Herbs", "Flower", "Miscellaneous"])%>
+
+<br>
+    <%= f.label :Difficulty_Rating%>
+    <%= f.text_field :difficulty_rating%>
+
+<br>
+    <%= f.label :Description %>
+    <%= f.text_field :description%>
+<br>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <%=  f.submit "Submit" %>
+
+<%end%>

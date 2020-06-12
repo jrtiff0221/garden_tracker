@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
         # want to check that user exists
         #then authenticate their password
         if @user && @user.authenticate(params[:user][:password])
+            #resume user session  and takes user to all gardens page
             session[:user_id] = @user.id
-            redirect_to gardens_path
+            redirect_to new_garden_path
         else
             redirect_to '/login'
 
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session.clear
-        redirect_to login_path
+        redirect_to '/'
         #logging out
     end
 

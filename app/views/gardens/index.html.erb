@@ -1,1 +1,7 @@
 <h1> All Gardens </h1>
+<% @gardens.each do |garden| %>
+    <%= link_to garden.garden_name, garden_path(garden) %>
+    &nbsp;&nbsp;
+    <%= garden.difficulty_rating %>
+    <br>
+<% end %>
