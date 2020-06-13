@@ -1,7 +1,17 @@
-<h1> All Gardens </h1>
-<% @gardens.each do |garden| %>
-    <%= link_to garden.garden_name, garden_path(garden) %>
-    &nbsp;&nbsp;
-    <%= garden.difficulty_rating %>
-    <br>
-<% end %>
+<h2> All Gardens </h2>
+<table class="table table-striped table-bordered">
+  <thead class="table-header">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Difficulty Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gardens.each do |garden| %>
+        <tr>
+            <th scope="row"><%= link_to garden.garden_name, garden_path(garden), class: "btn btn-info btn-sm" %></th>
+            <td><% for i in 1..garden.difficulty_rating do %><i class="fas fa-star gold-star"></i><% end %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -7,13 +7,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    </head>
 
   <body>
-     
-     <%= link_to 'Log Out', logout_path, method: :delete %>
-     <%= link_to 'New Garden', new_garden_path, method: :get %>
+    <% if current_user.present? %>
+      <%= render :partial => "layouts/navbar" %>
+    <% end %>
+    <div class='container'>
+      <%= yield %>
+    </div>
     
-    <%= yield %>
   </body>
 </html>
