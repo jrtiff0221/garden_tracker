@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_164553) do
+ActiveRecord::Schema.define(version: 2020_06_15_073647) do
 
   create_table "gardens", force: :cascade do |t|
     t.integer "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_164553) do
     t.integer "produce_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["produce_name", "category"], name: "index_produces_on_produce_name_and_category"
   end
 
   create_table "users", force: :cascade do |t|

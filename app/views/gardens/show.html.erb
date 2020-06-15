@@ -12,5 +12,7 @@
 
 
 <br>
-<%= link_to "Edit Garden", edit_garden_path(@garden) %>
-<%= link_to "Delete Garden", garden_path(@garden), method: :delete,  data: { confirm: 'Are You Sure?' }%>
+<% if current_user.id == @garden.user_id %>
+    <%= link_to "Edit Garden", edit_garden_path(@garden) %>
+    <%= link_to "Delete Garden", garden_path(@garden), method: :delete,  data: { confirm: 'Are You Sure?' }%>
+<% end %>

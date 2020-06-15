@@ -8,8 +8,10 @@
   <tbody>
     <% @produces.each do |produce| %>
       <tr>
-        <td><%= produce.produce_name %></td>
+        <td><%= link_to produce.produce_name, produce_path(produce), class: "btn btn-info btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "Add Produce ", new_produce_path %>

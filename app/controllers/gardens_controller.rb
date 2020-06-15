@@ -47,7 +47,7 @@ class GardensController < ApplicationController
 
     def update
         set_garden
-        if @garden.update(garden_params)
+        if current_user.id == @garden.user_id  && @garden.update(garden_params)
             redirect_to garden_path(@garden)
         else
             render :edit
@@ -56,8 +56,10 @@ class GardensController < ApplicationController
 
     def destroy
         set_garden
-        @garden.destroy 
-        redirect_to gardens_path
+        if current_user.id == @garden.user_id 
+            @garden.destroy 
+            redirect_to gardens_path
+        end
     end
 
     private

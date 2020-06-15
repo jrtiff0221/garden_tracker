@@ -1,6 +1,7 @@
 class Produce < ApplicationRecord
     validates :produce_name, :category, presence: true
-    
+    validates :produce_name, uniqueness: { scope: :category }
+
     has_many :gardens
     has_many :users, through: :gardens
     
