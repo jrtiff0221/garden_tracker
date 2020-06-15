@@ -2,3 +2,9 @@
 <div><strong>Category:</strong> <%= @garden.category %></div>
 <div><strong>Difficulty:</strong> <%= @garden.difficulty_rating %></div>
 <div><strong>Description:</strong> <%= @garden.description %></div>
+<br>
+<br>
+ 
+<%= link_to "Edit Garden", edit_garden_path(@garden) %>
+<%= link_to "Delete Garden", garden_path(@garden), method: :delete,  data: { confirm: 'Are You Sure?' }%>
+<%= link_to "Add Produce ", new_produce_path(@produce) %>

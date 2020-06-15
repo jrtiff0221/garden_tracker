@@ -8,14 +8,16 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            redirect_to user_path(@user)
+            #login the user
+            session[:user_id] = @user.id
+            redirect_to gardens_paths
         else
             render :new
         end
     end
     
-    def show
-        @user = User.find(params[:id])
+    def index
+        @users = User.all
     end 
 
     private 

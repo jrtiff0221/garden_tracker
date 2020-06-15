@@ -1,0 +1,15 @@
+<h2>All Produce</h2>
+<table class="table table-striped table-bordered">
+  <thead class="table-header">
+    <tr>
+      <th scope="col">Produce Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @produces.each do |produce| %>
+      <tr>
+        <td><%= produce.produce_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
   
 
-  root 'sessions#home'
-  get '/signup' => 'users#new'
-  get  '/login' =>  'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
+  root 'application#home'
+  get '/signup', to: 'users#new'
+  get  '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   
-  resources :users
+  resources :users, except: [:new]
   
   resources :gardens 
-  resources :produces
+
+  resources :produces do 
+    resource :gardens
+  end
+
+  resource :produces
 
 
   

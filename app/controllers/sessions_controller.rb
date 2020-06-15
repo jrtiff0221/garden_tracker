@@ -21,11 +21,6 @@ class SessionsController < ApplicationController
         end
     end
     
-    def home   
-    end 
-    
-
-
     def destroy
         session.clear
         redirect_to '/'

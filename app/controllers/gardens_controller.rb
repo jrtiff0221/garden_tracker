@@ -6,8 +6,6 @@ class GardensController < ApplicationController
 
     def create
         @garden = Garden.new(garden_params)
-        
-        
 
         if @garden.save
         
@@ -27,7 +25,9 @@ class GardensController < ApplicationController
     end
 
     def show
+
         @garden = Garden.find_by(id: params[:id])
+        
     end
 
     def edit
@@ -45,7 +45,7 @@ class GardensController < ApplicationController
 
     def destroy
         set_garden
-        @garden.destroy  
+        @garden.destroy 
         redirect_to gardens_path
     end
 

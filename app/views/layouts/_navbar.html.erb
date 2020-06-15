@@ -1,8 +1,11 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">Garden Manager</a>
+  <a class="navbar-brand" href="/">Garden Tracker</a>
   <form class="form-inline">
     <%= link_to 'New Garden', new_garden_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
-    <%= link_to 'All Gardens', gardens_path, method: :get, class: "btn btn-outline-primary" %>
+    <%= link_to 'All Gardens', gardens_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
+    <%= link_to 'All Produces', produces_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
+    <%= link_to 'All Users', users_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
+     
     <div style="padding-left: 10px;">
       <%= link_to 'Log Out', logout_path, method: :delete, class: "btn btn-outline-success" %>
     </div>
