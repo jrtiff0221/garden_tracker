@@ -4,8 +4,6 @@ class Produce < ApplicationRecord
     has_many :gardens
     has_many :users, through: :gardens
     
-    
-    
     scope :order_by_category, -> {order(:category)}
     scope :vegetables, -> {where(category: "Vegetable")}
     scope :fruits, -> {where(category: "Fruit")}

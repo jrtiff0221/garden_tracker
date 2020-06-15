@@ -19,7 +19,7 @@ class ProducesController < ApplicationController
     def index
         if params[:category]
             @produces = Produce.search_by_category(params[:category])
-            @produces = Produce.order_by_category if @producess == []
+            @produces = Produce.order_by_category if @produces == []
         else 
             @produces = Produce.order_by_category
         end
@@ -58,7 +58,7 @@ class ProducesController < ApplicationController
     end
     
     def produce_params
-        params.require(:produce).permit(:produce_name, :category, :number_of_produce, :img, )
+        params.require(:produce).permit(:produce_name, :category, :number_of_produce, :img)
     end
 
 end

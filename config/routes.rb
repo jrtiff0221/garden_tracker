@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :gardens 
 
   resources :produces do 
-    resource :gardens
+    resource :gardens 
   end
 
   resource :produces
