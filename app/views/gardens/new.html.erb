@@ -26,8 +26,8 @@
 <br><br>
 
 <%= f.label :produce_id, "Add Produce"%>
-<%= f.collection_select :produce_id, Produce.all, :id, :produce_name%>
+<%= f.collection_select :produce_id, Produce.all, :id, :produce_name, :include_blank => true %>
 
-  <%=  f.submit "Submit" %>
+<%=  f.submit "Submit" %>
 
 <%end%>
