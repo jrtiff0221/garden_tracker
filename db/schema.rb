@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_172602) do
+ActiveRecord::Schema.define(version: 2020_06_17_055331) do
 
   create_table "comments", force: :cascade do |t|
     t.string "author"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2020_06_16_172602) do
     t.string "commment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
   end
 
   create_table "gardens", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "comment_id"
     t.integer "garden_id"
     t.string "garden_name"
     t.integer "difficulty_rating"
@@ -30,18 +30,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_172602) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
     t.string "description"
-    t.integer "comment_id"
-  end
-
-  create_table "produces", force: :cascade do |t|
-    t.string "produce_name"
-    t.string "category"
-    t.integer "number_of_produce"
-    t.string "img"
-    t.integer "produce_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["produce_name", "category"], name: "index_produces_on_produce_name_and_category"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             #login the user
             session[:user_id] = @user.id
-            redirect_to gardens_paths
+            redirect_to gardens_path
         else
             render :new
         end

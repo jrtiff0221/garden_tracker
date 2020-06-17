@@ -8,9 +8,7 @@ def new
   
 
     def create
-        puts "\n\n\n\n\ngarden_params"
-        puts garden_params
-        
+      
         @garden = Garden.new(garden_params)
    
         if @garden.valid?
