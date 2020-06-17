@@ -1,44 +1,39 @@
 class GardensController < ApplicationController
 
-    def new
+     
+def new
         @garden = Garden.new
-        #check if it's nested & it's a proper id
-        # if params[:garden] && params[:garden][:produce_id] && produce = Produce.find_by(id: params[:garden][:produce_id])
-        
-        #     #nested route
-        #     @garden = Garden.new(params[:garden])
-        #     # @produce = User..build(produce: @produce, garden: @garden)
-        # else
-        #     @garden = Garden.new
-        # end
+        @comments = Comment.all
     end
+  
 
     def create
-        puts "garden_params"
+        puts "\n\n\n\n\ngarden_params"
         puts garden_params
-        @garden = Garden.new(garden_params)
-
-        if @garden.save
         
-            redirect_to garden_path(@garden)
+        @garden = Garden.new(garden_params)
+   
+        if @garden.valid?
+            @garden.save
+        
+            redirect_to  garden_path(@garden)
         else
             render :new
         end
     end 
 
+  
     def index
         if params[:category]
             @gardens = Garden.search_by_category(params[:category])
-            @gardnes = Garden.order_by_category if @gardens == []
+            @gardens = Garden.order_by_author if @gardens == []
         else 
-            @gardens = Garden.order_by_category
+            @gardens = Garden.order_by_author
         end
     end
 
     def show
-
-        @garden = Garden.find_by(id: params[:id])
-  
+        @garden = Garden.find_by(id: params[:user_id])
     end
 
     def edit
@@ -72,7 +67,6 @@ class GardensController < ApplicationController
     end
     
     def garden_params
-        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description, :user_id, :produce_id)
+        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description, :user_id)
     end
-
 end

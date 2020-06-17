@@ -1,0 +1,28 @@
+<h1> Create a Comment</h1>
+<br >
+
+<%= form_for (@comment)  do |f| %>
+ <ul>
+    <% @comment.errors.full_messages.each do |error_message|%>
+    <li><%= error_message%></li>
+    <%end%>
+    </ul>
+    
+    <%= f.label :Author %>
+    <%= f.text_field :author %>
+
+<br>
+    <%= f.label :Title%>
+    <%= f.text_field :title %>
+<br>
+    <%= f.label :Message%>
+    <%= f.text_field :message%>
+
+
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<br><br>
+
+
+<%=  f.submit "Submit" %>
+<%end%>
+

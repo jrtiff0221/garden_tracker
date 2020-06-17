@@ -1,32 +1,32 @@
-	<%= form_for @garden do |f| %>
-<% if @garden.errors.any? %>
-    <div id="error_explanation">
-      <h2>There were some errors:</h2>
+<h1> Create a Garden</h1>
+<br >
 
-      <ul>
-        <% @garden.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for (@garden)  do |f| %>
+ <ul>
+    <% @garden.errors.full_messages.each do |error_message|%>
+    <li><%= error_message%></li>
+    <%end%>
+    </ul>
+    
+    <%= f.label :Garden_name %>
+    <%= f.text_field :garden_name %>
+<br>
+    <%= f.label :category %>
+    <%= f.select(:category, ["Vegetable", "Fruit", "Herbs", "Flower", "Miscellaneous"])%>
 
-<%= f.label :garden_name%>
-<%= f.text_field :garden_name%><br>
+<br>
+    <%= f.label :Difficulty_Rating%>
+    <%= f.text_field :difficulty_rating%>
 
-
-
-<%= f.label :category %>
-<%= f.text_field :category %><br>
-
-<%= f.label :difficulty_rating %>
-<%= f.text_field :difficulty_rating %><br>
-
-<%= f.label :description %>
-<%= f.text_field :description %>
+<br>
+    <%= f.label :Description %>
+    <%= f.text_field :description%>
+<br>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 <br><br>
-<%= f.label :produce_id, "Add Produce"%>
-<%= f.collection_select :produce_id, Produce.all, :id, :produce_name, :include_blank => true %>
 
-<%= f.submit %>
-<% end %> 
+
+
+<%=  f.submit "Submit" %>
+
+<%end%>

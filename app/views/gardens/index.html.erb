@@ -2,15 +2,15 @@
 <table class="table table-striped table-bordered">
   <thead class="table-header">
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Garden Name</th>
       <th scope="col">Difficulty Rating</th>
     </tr>
   </thead>
   <tbody>
-    <% @gardens.each do |garden| %>
+    <% @gardens.each do |g| %>     
         <tr>
-            <th scope="row"><%= link_to garden.garden_name, garden_path(garden), class: "btn btn-info btn-sm" %></th>
-            <td><% for i in 1..garden.difficulty_rating do %><i class="fas fa-star gold-star"></i><% end %></td>
+            <th scope="row"><%= link_to g.garden_name, garden_path(g), class: "btn btn-info btn-sm" %></th>
+            <td><% for i in 1..g.difficulty_rating do %><i class="fas fa-star gold-star"></i><% end %></td>
         </tr>
     <% end %>
   </tbody>

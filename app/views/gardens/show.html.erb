@@ -1,15 +1,10 @@
+
 <div><strong>Garden Name:</strong> <%= @garden.garden_name %></div>
 <div><strong>Category:</strong> <%= @garden.category %></div>
 <div><strong>Difficulty:</strong> <%= @garden.difficulty_rating %></div>
 <div><strong>Description:</strong> <%= @garden.description %></div>
 <br>
 <br><br>
-<% if @garden.produce %>
-    <div><strong>Produce Name:</strong> <%= @garden.produce.produce_name %></div>
-    <div><strong>Category:</strong> <%= @garden.produce.category %></div>
-    <div><strong>Number of Produce:</strong> <%= @garden.produce.number_of_produce %></div>
-<% end %>
-
 
 <br>
 <% if current_user.id == @garden.user_id %>

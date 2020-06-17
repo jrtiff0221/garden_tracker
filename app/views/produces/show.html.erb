@@ -1,7 +1,0 @@
-<div><strong>Produce Name:</strong> <%= @produce.produce_name %></div>
-<div><strong>Category:</strong> <%= @produce.category %></div>
-<div><strong>Number of Produce:</strong> <%= @produce.number_of_produce %></div>
-
- 
-<%= link_to "Edit Produce", edit_produce_path(@produce) %>
-<%= link_to "Delete Produce", produce_path(@produce), method: :delete,  data: { confirm: 'Are You Sure?' }%>
