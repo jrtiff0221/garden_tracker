@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
-    
-  resources :users, except: [:new]
-  
-  resources :gardens 
+      
+
+  root 'application#home'
+  devise_for :users
+
+  resources :gardens
   resources :comments
   
   resources :comments do 
-    resource :gardens 
+    resource :gardens, only: [ :index, :show, :new ] 
   end
-  
-  root 'application#home'
-  get '/signup', to: 'users#new'
-  get  '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

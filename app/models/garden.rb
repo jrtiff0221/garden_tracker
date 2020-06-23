@@ -2,8 +2,10 @@ class Garden < ApplicationRecord
     validates :garden_name, :category, presence: true
 
     belongs_to :user
-    belongs_to :comment, optional: true
-    
+    has_many :comments, dependent: :destroy 
+
+    accepts_nested_attributes_for :comments
+
     scope :vegetables, -> {where(category: "Vegetable")}
     scope :fruits, -> {where(category: "Fruit")}
     scope :herbs, -> {where(category: "Herb")}

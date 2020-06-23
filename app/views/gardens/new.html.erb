@@ -1,17 +1,19 @@
 <h1> Create a Garden</h1>
 <br >
+ 
+    <% if @garden.errors.any? %>
+    <% @garden.errors.full_messages.each do |error_message|%>
+     <li style="color: red"> <%= error_message %></li>
+     <% end %>
+<%end%>
 
 <%= form_for (@garden)  do |f| %>
- <ul>
-    <% @garden.errors.full_messages.each do |error_message|%>
-    <li><%= error_message%></li>
-    <%end%>
-    </ul>
     
     <%= f.label :Garden_name %>
     <%= f.text_field :garden_name %>
 <br>
-    <%= f.label :category %>
+    
+    <%= f.label :Category %>
     <%= f.select(:category, ["Vegetable", "Fruit", "Herbs", "Flower", "Miscellaneous"])%>
 
 <br>
@@ -23,10 +25,8 @@
     <%= f.text_field :description%>
 <br>
 <%= f.hidden_field :user_id, :value => current_user.id %>
-<br><br>
-
 <br>
 
 <%=  f.submit "Submit" %>
 
-<%end%>
+<% end  %>

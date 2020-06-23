@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import 'bootstrap';
+@import 'bootstrap';
 
 $white: white;
 $black: black;
@@ -49,4 +49,11 @@ p {
 .table-header {
     background: $green-dark;
     border-color: $green-dark !important;
+}
+
+.card {
+    max-width: 400px;
+    width: 400px;
+    margin: 15px 0;
+    background-color: $green-light;
 }

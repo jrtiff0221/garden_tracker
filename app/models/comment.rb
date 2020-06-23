@@ -1,11 +1,13 @@
 class Comment < ApplicationRecord
-    validates :author, :title, :message, presence: true
-   
+    validates :author, :title, :message, :user_id, presence: true
 
-    has_many :gardens
-    has_many :users, through: :gardens
+
+    belongs_to :garden
+    belongs_to :user
     
-    scope :order_by_author, -> {order(:author)}
-    scope :search_by_author, -> (search_author){where("author= ?", search_author)}
+    # accepts_nested_attributes_for :gardens
+    
+    scope :order_by_title, -> {order(:title)}
+    scope :search_by_title, -> (search_title){where("title= ?", search_title)}
     
 end

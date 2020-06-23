@@ -3,11 +3,26 @@
 <div><strong>Category:</strong> <%= @garden.category %></div>
 <div><strong>Difficulty:</strong> <%= @garden.difficulty_rating %></div>
 <div><strong>Description:</strong> <%= @garden.description %></div>
-<br>
-<br><br>
+<div><strong>Comments:</strong></div>
+<% @garden.comments.each do |comment| %>
+<div class="card">
+
+  <div class="card-body">
+    <h5 class="card-title">Title: <%= comment.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Author:  <%= comment.author %></h6>
+    <p class="card-text"><%= comment.message %></p>
+ </div>
+</div>
+<% end %>
+
+
 
 <br>
-<% if current_user.id == @garden.user_id %>
+
+<%= link_to "Add Comment", new_comment_path(garden_id: @garden.id) %>
+<br>
+<br>
+<% if current_user.id == @garden.user %>
     <%= link_to "Edit Garden", edit_garden_path(@garden) %>
     <%= link_to "Delete Garden", garden_path(@garden), method: :delete,  data: { confirm: 'Are You Sure?' }%>
 <% end %>

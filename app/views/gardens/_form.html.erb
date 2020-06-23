@@ -1,5 +1,4 @@
-<h1> Create a Garden</h1>
-<br >
+
 
 <%= form_for (@garden)  do |f| %>
  <ul>
@@ -23,9 +22,7 @@
     <%= f.text_field :description%>
 <br>
 <%= f.hidden_field :user_id, :value => current_user.id %>
-<br><br>
-
-
+<br>
 
 <%=  f.submit "Submit" %>
 

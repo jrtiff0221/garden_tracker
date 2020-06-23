@@ -1,20 +1,19 @@
 class CommentsController < ApplicationController
-
+    before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
     
     def new
-        @comment = Comment.new
-        @gardens = Garden.all
+        @comment = current_user.comments.build
     end
 
     def create
-        
-        @comment = Comment.new(comment_params)
-   
+        @garden = Garden.find(comment_params[:garden_id])
+        @comment = @garden.comments.create(comment_params)
+
         if @comment.valid?
             @comment.save
         
-            redirect_to  comment_path(@comment)
+            redirect_to garden_path(@garden)
         else
             render :new
         end
@@ -22,11 +21,11 @@ class CommentsController < ApplicationController
 
 
     def index
-        if params[:author]
-            @comments = Comment.search_by_author(params[:author])
-            @comments = Comment.order_by_author if @comments == []
+        if params[:title]
+            @comments = Comment.search_by_title(params[:title])
+            @comments = Comment.order_by_title if @comments == []
         else 
-            @comments = Comment.order_by_author
+            @comments = Comment.order_by_title
         end
     end
 
@@ -43,7 +42,7 @@ class CommentsController < ApplicationController
 
     def update
         set_comment
-        if current_user.id == @comment.user_id  && @comment.update(comment_params)
+        if current_user.id == @comment.id  && @comment.update(comment_params)
             redirect_to comment_path(@comment)
         else
             render :edit
@@ -52,7 +51,7 @@ class CommentsController < ApplicationController
 
     def destroy
         set_comment
-        if current_user.id == @comment.user_id 
+        if current_user.id == @comment.id 
             @comment.destroy 
             redirect_to comments_path
         end
@@ -68,6 +67,12 @@ class CommentsController < ApplicationController
     end
     
     def comment_params
-        params.require(:comment).permit(:author, :title, :message, :user_id)
+        params.require(:comment).permit( 
+            :message,
+            :author,
+            :title,
+            :user_id,
+            :garden_id,
+        )
     end
 end

@@ -1,12 +1,15 @@
 <h1> Create a Comment</h1>
 <br >
-
-<%= form_for @comment, :url => comment_path do |f| %>
- <ul>
+ 
+    <% if @comment.errors.any? %>
     <% @comment.errors.full_messages.each do |error_message|%>
-    <li><%= error_message%></li>
-    <%end%>
-    </ul>
+     <li style="color: red"> <%= error_message %></li>
+     <% end %>
+<%end%>
+
+    
+
+<%= form_for @comment do |f| %>
     
     <%= f.label :Author %>
     <%= f.text_field :author %>
@@ -16,10 +19,11 @@
     <%= f.text_field :title %>
 <br>
     <%= f.label :Message%>
-    <%= f.text_field :message%>
+    <%= f.text_field :message %>
 
 
 <%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :garden_id, :value => params[:garden_id] %>
 <br><br>
 
 <%=  f.submit "Submit" %>

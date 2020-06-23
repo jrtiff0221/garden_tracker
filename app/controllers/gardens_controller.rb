@@ -1,15 +1,16 @@
 class GardensController < ApplicationController
-
+    before_action :set_garden, only: [:show, :edit, :update, :destroy]
      
-def new
+    def new
         @garden = Garden.new
-        @comments = Comment.all
+        # @garden = current_user.gardens.build
+      
     end
   
 
     def create
       
-        @garden = Garden.new(garden_params)
+        @garden = current_user.gardens.build(garden_params)
    
         if @garden.valid?
             @garden.save
@@ -20,7 +21,6 @@ def new
         end
     end 
 
-  
     def index
         if params[:category]
             @gardens = Garden.search_by_category(params[:category])
@@ -31,7 +31,7 @@ def new
     end
 
     def show
-        @garden = Garden.find_by(id: params[:user_id])
+        @garden = Garden.find_by(id: params[:id])
     end
 
     def edit
@@ -40,7 +40,7 @@ def new
 
     def update
         set_garden
-        if current_user.id == @garden.user_id  && @garden.update(garden_params)
+        if current_user.id == @garden.user_id && @garden.update(garden_params)
             redirect_to garden_path(@garden)
         else
             render :edit
@@ -65,6 +65,7 @@ def new
     end
     
     def garden_params
-        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description, :user_id)
+        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description)
     end
+
 end
