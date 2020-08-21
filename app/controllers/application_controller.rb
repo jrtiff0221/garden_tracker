@@ -1,5 +1,17 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :configure_permitted_parameters, if: :devise_controller? 
+    
+    def home
+
+
+        if current_user.present? 
+            redirect_to gardens_path
+        else
+            render :home
+        end
+    end
+
+
 
   protected
 
@@ -8,11 +20,5 @@ class ApplicationController < ActionController::Base
     end
     
     
-    def home
-        if current_user.present? 
-            redirect_to gardens_path
-        else
-            render :home
-        end
-    end
+ 
 end
