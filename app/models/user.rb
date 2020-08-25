@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable
+         :omniauthable,  omniauth_providers: %i[github]
          
  
   has_many :gardens
@@ -16,6 +16,7 @@ class User < ApplicationRecord
       user.uid = auth.uid 
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      byebug
     end
   end
 end
