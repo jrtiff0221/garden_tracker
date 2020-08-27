@@ -24,8 +24,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'omniauth'
 gem 'omniauth-github'
+gem 'dotenv-rails'
+
 gem 'devise'
 gem 'bootstrap'
 gem 'pry', '~> 0.13.1'
