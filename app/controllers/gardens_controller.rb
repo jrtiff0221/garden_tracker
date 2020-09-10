@@ -2,16 +2,17 @@ class GardensController < ApplicationController
     before_action :set_garden, only: [:show, :edit, :update, :destroy]
      
     def new
-        @garden = Garden.new
-        # @garden = current_user.gardens.build
+        
+        @garden = current_user.gardens.build
       
     end
   
 
     def create
-      
+        
         @garden = current_user.gardens.build(garden_params)
-   
+      
+
         if @garden.valid?
             @garden.save
         
@@ -65,7 +66,7 @@ class GardensController < ApplicationController
     end
     
     def garden_params
-        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description)
+        params.require(:garden).permit(:garden_name, :category, :difficulty_rating, :description,:user_id)
     end
 
 end

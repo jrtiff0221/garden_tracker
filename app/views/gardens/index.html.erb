@@ -4,14 +4,12 @@
     <tr>
       <th scope="col">Garden Name</th>
       <th scope="col">Difficulty Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @gardens.each do |g| %>     
-        <tr>
-            <th scope="row"><%= link_to g.garden_name, garden_path(g), class: "btn btn-info btn-sm" %></th>
-            <td><% for i in 1..g.difficulty_rating do %><i class="fas fa-star gold-star"></i><% end %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+  </tr>
+    </thead>
+    <tbody>
+    <% @gardens.each do |garden| %>
+      <td><%= garden.garden_name %></td>
+        <td><%= garden.difficulty_rating %></td>
+        <% end %>
+    </tbody>
+</table> 

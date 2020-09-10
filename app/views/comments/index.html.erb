@@ -10,9 +10,11 @@
   <tbody>
     <% @comments.each do |c| %>
    
-  
-        <tr>
-            <th scope="row"><%= link_to c.title, comment_path(c), class: "btn btn-info btn-sm" %></th>
+        <td><%= @pattern.comments.title %></td>
+        <td><%= @pattern.comments.author %></td>
+         <td><%= @pattern.comments.message %></td>
+       
+     
         </tr>
     <% end %>
   </tbody>
